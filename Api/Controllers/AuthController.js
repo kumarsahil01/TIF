@@ -78,7 +78,6 @@ exports.signin = async (req, res) => {
 exports.me = async (req, res) => {
     try {
         // Retrieve the token from the request cookies
-        // console.log(req.cookies.acessToken)
         const token = req.cookies.acessToken;
         
         if (!token) {

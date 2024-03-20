@@ -4,6 +4,9 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 const cookieParser = require("cookie-parser");
 const AuthRoute=require("./Routes/AuthRoutes")
+const CommunityRoute=require("./Routes/CommunityRoutes")
+const RoleRoute=require('./Routes/RoleRoutes')
+const Member=require('./Routes/MemberRoutes')
 
 //create connection with mongo db 
 const connect = async () => {
@@ -25,3 +28,6 @@ app.listen(8000, () => {
   });
 
 app.use('/api/auth',AuthRoute)
+app.use('/api/community',CommunityRoute)
+app.use('/api/role',RoleRoute)
+app.use('/api/member',Member)
