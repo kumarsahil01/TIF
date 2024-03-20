@@ -47,6 +47,10 @@ exports.addMember = async (req, res) => {
         if (!isCommunityAdmin) {
             return res.status(403).json({ status: false, message: "Only Community Admin/owner can add members" });
         }
+        const existingMember = await Member.findOne({ community: community, user: user });
+        if (existingMember) {
+            return res.status(400).json({ status: false, message: "Member already exists in the community" });
+        }
 
         const id = Snowflake.generate();
 
